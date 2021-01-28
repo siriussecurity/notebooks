@@ -41,7 +41,7 @@ If you are using the TI provider to execute single manual requests, you can set 
 To see the new provider in action, run the following code in your notebook:
 
 ```python
-result = ti_lookup.lookup_ioc(observable="8.8.8.8", providers=["Shodan", "VirusTotal"])
+result = ti_lookup.lookup_ioc(observable="8.8.8.8", providers=["Shodan"])
 df = ti_lookup.result_to_df(result)
 df
 ```
