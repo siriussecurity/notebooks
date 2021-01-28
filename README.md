@@ -27,7 +27,7 @@ ti_lookup = load_ti_providers(provider_configs)
 Currently the msticpy_ti_providers notebook contains only the Shodan provider, but a couple more will follow soon. 
 
 ### Shodan
-The Shodan provider needs the following config paramters:
+The Shodan provider needs the following config parameters:
 
 * shodan_api_key: this is your API from your Shodan subscription.
 * shodan_sleep_time: the time in seconds between each request to Shodan.
