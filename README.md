@@ -31,7 +31,7 @@ The Shodan provider supports ipv4 observables. It will retrieve detailed informa
 
 The Shodan provider needs the following config parameters:
 
-* shodan_api_key: this is your API from your Shodan subscription.
+* shodan_api_key: this is your API key from your Shodan subscription.
 * shodan_sleep_time: the time in seconds between each request to Shodan.
 
 The shodan_sleep_time parameter is required because Shodan requires the requests to have a 500ms interval. If too many requests in a short period are being send to Shodan it will throw an HTTP error.
