@@ -27,6 +27,8 @@ ti_lookup = load_ti_providers(provider_configs)
 Currently the msticpy_ti_providers notebook contains only the Shodan provider, but a couple more will follow soon. 
 
 ### Shodan
+The Shodan provider supports ipv4 observables. It will retrieve detailed information about the IP address and open ports from the Shodan API.
+
 The Shodan provider needs the following config parameters:
 
 * shodan_api_key: this is your API from your Shodan subscription.
@@ -34,3 +36,12 @@ The Shodan provider needs the following config parameters:
 
 The shodan_sleep_time parameter is required because Shodan requires the requests to have a 500ms interval. If too many requests in a short period are being send to Shodan it will throw an HTTP error.
 If you are using the TI provider to execute single manual requests, you can set this value to 0. If it's being used to enrich data frames use a value somewhere around 0.3 to 0.5 seconds (this may require some tuning, to be safe use 0.5).
+
+### Viewing results
+To see the new provider in action, run the following code in your notebook:
+
+```python
+result = ti_lookup.lookup_ioc(observable="8.8.8.8", providers=["Shodan", "VirusTotal"])
+df = ti_lookup.result_to_df(result)
+df
+```
