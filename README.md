@@ -1,18 +1,21 @@
 # notebooks
 
-## msticpy_ti_providers
+## Referencing the notebooks
 
-Adds additional TI providers to msticpy.
-
-Place this notebook in the same folder as your analytics notebook. To be able reference the classes and functions add the following code to your notebook and execute it.
+Place these notebooks in the same folder as your analytics notebook. To be able reference the classes and functions add the following code to your notebook and execute it.
 
 ```python
 #Install ipynb into your kernel (this has to be done once)
 !pip install ipynb
 
 # Import the functions and classes from the msticpy_ti_providers notebook
-from ipynb.fs.full.msticpy_ti_providers import Shodan, load_ti_providers
+from ipynb.fs.full.msticpy_ti_providers import *
+from ipynb.fs.full.msticpy_data_drivers import *
 ```
+
+## msticpy_ti_providers
+
+Adds additional TI providers to msticpy.
 
 Unfortunately it's not possible to configure the new TI providers in the msticpyconfig.yaml, so we need an alternative method to feed the config settings to the providers.
 To load the configured standard msticpy and additional providers run the following code:
@@ -44,4 +47,22 @@ To see the new provider in action, run the following code in your notebook:
 result = ti_lookup.lookup_ioc(observable="8.8.8.8", providers=["Shodan"])
 df = ti_lookup.result_to_df(result)
 df
+```
+
+## msticpy_data_drivers
+
+Adds additional data drivers to msticpy.
+
+### MTP / Defender 365
+
+To create a connection to MTP create a new QueryProvicer instance using te new MTPDriver. Use the application and tenant id's to establish a connection.
+
+```python
+from msticpy.data.data_providers import QueryProvider
+
+# Create a query provider for MTP
+qry_prov_mtp = QueryProvider(data_environment='MTP', driver=MTPDriver())
+
+# Log on to the workspace
+connection = qry_prov_mtp.connect(app_id=app_id, tenant_id=tenant_id)
 ```
