@@ -71,6 +71,8 @@ from msticpy.data.data_providers import QueryProvider
 qry_prov_mtp = QueryProvider(data_environment='MTP', driver=MTPDriver())
 
 # Log on to the workspace
+app_id = <<your app id>>
+tenant_id = <<your tenant id>>
 qry_prov_mtp.connect(app_id=app_id, tenant_id=tenant_id)
 ```
 
