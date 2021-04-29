@@ -9,7 +9,7 @@ Place these notebooks in the same folder as your analytics notebook. To be able 
 !pip install ipynb
 !pip install msal
 
-# Import the functions and classes from the msticpy_ti_providers notebook
+# Import the functions and classes from the TI providers and data drivers notebooks
 from ipynb.fs.full.msticpy_ti_providers import *
 from ipynb.fs.full.msticpy_data_drivers import *
 ```
