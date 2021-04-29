@@ -67,7 +67,7 @@ To create a connection to MTP create a new QueryProvider instance using te new M
 ```python
 from msticpy.data.data_providers import QueryProvider
 
-# Create a query provider for MTP
+# Create a query provider for MTP, we 'borrow' the MDATP data environment
 qry_prov_mtp = QueryProvider(data_environment='MDATP', driver=MTPDriver())
 
 # Log on to the workspace
