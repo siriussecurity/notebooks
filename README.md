@@ -54,7 +54,7 @@ df
 Adds additional data drivers to msticpy.
 
 ### Defender 365 (MTP)
-Authentication for the Defender 365 API is not based on the msticpy OAuth driver but on a "delegated permissions" model. The advantage of this is that no secrets need to be saved somewhere, but it's the user who interactively logs on (including MFA when configured). This is more secure and better suited for enterprise environments. Read more on how to configure delegated permissions:
+Authentication for the Defender 365 API is not based on the msticpy OAuth driver but on a "delegated permissions" model. The advantage of this is that no secrets need to be saved somewhere, but it's the user who interactively logs on (including MFA when configured). This is more secure and better suited for enterprise environments. Read more on how to configure delegated permissions (make sure to enable "AdvancedHunting.Read"):
 https://docs.microsoft.com/en-gb/microsoft-365/security/defender/api-create-app-user-context
 
 API limitations:
