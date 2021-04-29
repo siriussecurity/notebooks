@@ -5,7 +5,7 @@
 Place these notebooks in the same folder as your analytics notebook. To be able reference the classes and functions add the following code to your notebook and execute it.
 
 ```python
-#Install ipynb into your kernel (this has to be done once)
+#Install ipynb and msal into your kernel (this has to be done once)
 !pip install ipynb
 !pip install msal
 
