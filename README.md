@@ -53,14 +53,14 @@ df
 
 Adds additional data drivers to msticpy.
 
-### MTP / Defender 365
-Authentication for MTP API is based on "delegated permissions". The advantage of this is that no API keys need to be saved somewhere, but it's the user who interactively logs on (including MFA when configured).
+### Defender 365 (MTP)
+Authentication for the Defender 365 API is not based on the msticpy OAuth driver but on a "delegated permissions" model. The advantage of this is that no secrets need to be saved somewhere, but it's the user who interactively logs on (including MFA when configured). This is more secure and better suited for enterprise environments.
 
 API limitations:
 MTP API is limiting query results to 100.000 rows per time. It's also has a limit of 10 calls per minute, 10 minutes of running time every hour and 4 hours of running time a day. The maximal execution time of a single request is 10 minutes. Read more on:
 https://docs.microsoft.com/en-gb/microsoft-365/security/mtp/api-advanced-hunting
 
-To create a connection to MTP create a new QueryProvicer instance using te new MTPDriver. Use the application and tenant id's to establish a connection.
+To create a connection to MTP create a new QueryProvider instance using te new MTPDriver. Use the application and tenant id's to establish a connection.
 
 ```python
 from msticpy.data.data_providers import QueryProvider
@@ -69,5 +69,17 @@ from msticpy.data.data_providers import QueryProvider
 qry_prov_mtp = QueryProvider(data_environment='MTP', driver=MTPDriver())
 
 # Log on to the workspace
-connection = qry_prov_mtp.connect(app_id=app_id, tenant_id=tenant_id)
+qry_prov_mtp.connect(app_id=app_id, tenant_id=tenant_id)
 ```
+
+To see the driver in action, run the following code in your notebook:
+
+```python
+mtp_query = '''
+    DeviceProcessEvents 
+    | take 100
+    '''
+    
+qry_prov_mtp.exec_query(query=mtp_query)
+```
+
